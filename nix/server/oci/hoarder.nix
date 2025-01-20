@@ -13,26 +13,6 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-  #  virtualisation.oci-containers.containers."hoarder-ollama" = {
-  #    image = "ollama/ollama:0.5.3-rocm";
-  #    volumes = [
-  #      "/docker/hoarder/ollama:/root/.ollama:rw"
-  #    ];
-  #    ports = [
-  #      "11434:11434/tcp"
-  #    ];
-  #    log-driver = "journald";
-  #    environment = {
-  #      HSA_OVERRIDE_GFX_VERSION = "10.1.0";
-  #    };
-  #    extraOptions = [
-  #      "--device=/dev/dri/card1:/dev/dri/card0:rwm"
-  #      "--device=/dev/kfd:/dev/kfd:rwm"
-  #      "--network-alias=ollama"
-  #      "--network=hoarder_default"
-  #      "--privileged"
-  #    ];
-  #  };
   # Containers
   virtualisation.oci-containers.containers."hoarder-chrome" = {
     image = "${image.chrome}";
@@ -138,26 +118,26 @@
     ];
   };
 
-  # systemd.services."docker-hoarder-meilisearch" = {
-  #   serviceConfig = {
-  #     Restart = lib.mkOverride 90 "always";
-  #     RestartMaxDelaySec = lib.mkOverride 90 "1m";
-  #     RestartSec = lib.mkOverride 90 "100ms";
-  #     RestartSteps = lib.mkOverride 90 9;
-  #   };
-  #   after = [
-  #     "docker-network-hoarder_default.service"
-  #   ];
-  #   requires = [
-  #     "docker-network-hoarder_default.service"
-  #   ];
-  #   partOf = [
-  #     "docker-compose-hoarder-root.target"
-  #   ];
-  #   wantedBy = [
-  #     "docker-compose-hoarder-root.target"
-  #   ];
-  # };
+  systemd.services."docker-hoarder-meilisearch" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    after = [
+      "docker-network-hoarder_default.service"
+    ];
+    requires = [
+      "docker-network-hoarder_default.service"
+    ];
+    partOf = [
+      "docker-compose-hoarder-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-hoarder-root.target"
+    ];
+  };
 
   systemd.services."docker-hoarder-web" = {
     serviceConfig = {
