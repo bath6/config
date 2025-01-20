@@ -5,18 +5,33 @@
     # NixOS official package source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # pinned Ollama 5.1
+    nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
 
     # home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     #stylix
     stylix.url = "github:danth/stylix";
+    stylix-stable = {
+      url = "github:danth/stylix/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     #nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim-stable = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 
@@ -24,14 +39,18 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-ollama,
     home-manager,
+    home-manager-stable,
     stylix,
+    stylix-stable,
     nixvim,
+    nixvim-stable,
     ...
   } @ inputs: let
     # TODO:
     # secrets
-    image = builtins.fromJSON (builtins.readFile "${self}/server/oci/version.json");
+    image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
   in {
     nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem rec {
@@ -41,13 +60,21 @@
         inherit image;
         inherit secrets;
 
-        pkgs-unstable = import nixpkgs {
-          inherit system;
-        };
+        pkgs-unstable = import nixpkgs {inherit system;};
+        pkgs-ollama = import nixpkgs-ollama {inherit system;};
       };
       modules = [
         ./nix/server/desktop.nix
-        ./nix/nxvim.nix
+        ./nix/nvim.nix
+        stylix-stable.nixosModules.stylix
+        nixvim-stable.nixosModules.nixvim
+        home-manager-stable.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jacob = import ./hm/server.nix;
+          home-manager.backupFileExtension = "backup";
+        }
       ];
     };
     # Please replace my-nixos with your hostname

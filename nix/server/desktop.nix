@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-ollama,
   ...
 }: {
   imports = [
@@ -24,6 +24,6 @@
 
   environment.systemPackages = [
     pkgs.gocryptfs
-    pkgs-unstable.ollama
+    pkgs-ollama.ollama-rocm
   ];
 }

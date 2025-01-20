@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-{
-  
-  programs.nixvim = { 
+{...}
+: {
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
 
@@ -13,14 +12,12 @@
       shiftwidth = 2;
       expandtab = true;
       relativenumber = true;
-    };      
+    };
     clipboard = {
       providers = {
-        wl-copy.enable = true; # Wayland 
+        wl-copy.enable = true; # Wayland
       };
       register = "unnamedplus";
     };
-
   };
-
 }
