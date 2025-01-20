@@ -159,7 +159,7 @@
         "--network=gluetun_network"
       ];
       environment = {
-        TS_AUTHKEY = "tskey-auth-kLMj4QcCjy11CNTRL-eTCs3oPiVqh7QEoaoppVrhM1RpDZvb1rH";
+        TS_AUTHKEY = "${secrets.tskey}";
         TS_EXTRA_ARGS = "--advertise-tags=tag:docker";
         TS_STATE_DIR = "/var/lib/tailscale";
         TS_HOSTNAME = "swag";
