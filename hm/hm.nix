@@ -33,6 +33,8 @@
     pulsemixer
     nerd-fonts.symbols-only
     noto-fonts-color-emoji
+    mpv
+    telegram-desktop
   ];
 
   fonts.fontconfig.enable = true;
