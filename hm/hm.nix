@@ -41,6 +41,7 @@
     extraPackages = with pkgs; [
       nil
       alejandra
+      package-version-server
     ];
     userSettings = {
       features = {

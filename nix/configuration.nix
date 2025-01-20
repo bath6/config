@@ -45,6 +45,7 @@
     ollama
     bottom
     git
+    git-crypt
     sshfs
     speedtest-go
     mosh
