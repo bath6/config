@@ -12,6 +12,13 @@
   home.username = "jacob";
   home.homeDirectory = "/home/jacob";
 
+  qt.enable = true;
+  gtk.enable = true;
+  gtk.iconTheme = {
+    package = pkgs.pop-icon-theme;
+    name = "Pop";
+  };
+
   programs.bash.enable = true;
 
   home.file.".config/" = {
@@ -22,6 +29,7 @@
   home.packages = with pkgs; [
     firefox
     baobab
+    pcmanfm
     pulsemixer
     nerd-fonts.symbols-only
     noto-fonts-color-emoji

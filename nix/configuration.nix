@@ -49,6 +49,9 @@
     speedtest-go
     mosh
     tmux
+    gotop
+    nethogs
+    iotop
   ];
 
   networking.firewall = {

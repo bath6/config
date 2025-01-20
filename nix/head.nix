@@ -13,4 +13,6 @@
     withUWSM = true;
   };
   programs.hyprlock.enable = true;
+
+  services.gvfs.enable = true;
 }
