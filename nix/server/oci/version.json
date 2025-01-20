@@ -1,0 +1,20 @@
+{
+  "pihole": "pihole/pihole:2024.07.0",
+  "homepage": "ghcr.io/gethomepage/homepage:v0.10.9",
+  "mealie": "ghcr.io/mealie-recipes/mealie:v2.4.2",
+  "wud": "getwud/wud:8.0.0",
+  "gluetun": "qmcgaw/gluetun:v3.40.0",
+  "qbittorrent": "qbittorrentofficial/qbittorrent-nox:5.0.3-1",
+  "radarr": "linuxserver/radarr:5.17.2",
+  "sonarr": "linuxserver/sonarr:4.0.12",
+  "prowlarr": "linuxserver/prowlarr:version-1.29.2.4915",
+  "flaresolverr": "flaresolverr/flaresolverr:v3.3.21",
+  "tailscale": "tailscale/tailscale:v1.78.3",
+  "jellyseerr": "fallenbagel/jellyseerr:2.3.0",
+  "jellyfin": "jellyfin/jellyfin:10.10.3.20241119-033930",
+  "scrutiny": "ghcr.io/analogj/scrutiny:v0.8.1-omnibus",
+  "uptime-kuma": "louislam/uptime-kuma:1.23.16-debian",
+  "lubelogger": "ghcr.io/hargata/lubelogger:v1.4.3",
+  "chrome": "gcr.io/zenika-hub/alpine-chrome:124",
+  "meilisearch": "getmeili/meilisearch:v1.12.2"
+}
