@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-ollama,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-desktop.nix
@@ -25,6 +21,5 @@
 
   environment.systemPackages = [
     pkgs.gocryptfs
-    pkgs-ollama.ollama-rocm
   ];
 }

@@ -1,7 +1,11 @@
 # Auto-generated using compose2nix v0.3.2-pre.
-{ pkgs, lib, image, ... }:
-
 {
+  pkgs,
+  lib,
+  image,
+  secrets,
+  ...
+}: {
   # Runtime
   virtualisation.docker = {
     enable = true;
@@ -9,38 +13,38 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-#  virtualisation.oci-containers.containers."hoarder-ollama" = {
-#    image = "ollama/ollama:0.5.3-rocm";
-#    volumes = [
-#      "/docker/hoarder/ollama:/root/.ollama:rw"
-#    ];
-#    ports = [
-#      "11434:11434/tcp"
-#    ];
-#    log-driver = "journald";
-#    environment = {
-#      HSA_OVERRIDE_GFX_VERSION = "10.1.0";
-#    };
-#    extraOptions = [
-#      "--device=/dev/dri/card1:/dev/dri/card0:rwm"
-#      "--device=/dev/kfd:/dev/kfd:rwm"
-#      "--network-alias=ollama"
-#      "--network=hoarder_default"
-#      "--privileged"
-#    ];
-#  };
+  #  virtualisation.oci-containers.containers."hoarder-ollama" = {
+  #    image = "ollama/ollama:0.5.3-rocm";
+  #    volumes = [
+  #      "/docker/hoarder/ollama:/root/.ollama:rw"
+  #    ];
+  #    ports = [
+  #      "11434:11434/tcp"
+  #    ];
+  #    log-driver = "journald";
+  #    environment = {
+  #      HSA_OVERRIDE_GFX_VERSION = "10.1.0";
+  #    };
+  #    extraOptions = [
+  #      "--device=/dev/dri/card1:/dev/dri/card0:rwm"
+  #      "--device=/dev/kfd:/dev/kfd:rwm"
+  #      "--network-alias=ollama"
+  #      "--network=hoarder_default"
+  #      "--privileged"
+  #    ];
+  #  };
   # Containers
   virtualisation.oci-containers.containers."hoarder-chrome" = {
     image = "${image.chrome}";
     ports = ["9222:9222"];
-    cmd = [ "--no-sandbox" "--disable-gpu" "--disable-dev-shm-usage" "--remote-debugging-address=0.0.0.0" "--remote-debugging-port=9222" "--hide-scrollbars" ];
+    cmd = ["--no-sandbox" "--disable-gpu" "--disable-dev-shm-usage" "--remote-debugging-address=0.0.0.0" "--remote-debugging-port=9222" "--hide-scrollbars"];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=chrome"
       "--network=hoarder_default"
     ];
     labels = {
-      "wud.tag.exclude" = "[A-z]"; 
+      "wud.tag.exclude" = "[A-z]";
     };
   };
 
@@ -49,9 +53,9 @@
     ports = ["7700:7700"];
     environment = {
       "HOARDER_VERSION" = "release";
-      "MEILI_MASTER_KEY" = "Y/NlCYhVVT0QP9P6LtPP707H8MppMG1p9QFNNF8cLlh4Nbn4";
+      "MEILI_MASTER_KEY" = "${secrets.hoarder.meili}";
+      "NEXTAUTH_SECRET" = "${secrets.hoarder.nextauth}";
       "MEILI_NO_ANALYTICS" = "true";
-      "NEXTAUTH_SECRET" = "OFSBLTEfccsu2T+PFQT6vmfFDIekvHsTOPM7cfXObTwpEbfI";
       "NEXTAUTH_URL" = "http://desktop:3000";
     };
     volumes = [
@@ -63,7 +67,7 @@
       "--network=hoarder_default"
     ];
     labels = {
-      "wud.tag.include" = "v[0-9]"; 
+      "wud.tag.include" = "v[0-9]";
     };
   };
 
@@ -74,8 +78,8 @@
       "DATA_DIR" = "/data";
       "HOARDER_VERSION" = "release";
       "MEILI_ADDR" = "http://desktop:7700";
-      "MEILI_MASTER_KEY" = "Y/NlCYhVVT0QP9P6LtPP707H8MppMG1p9QFNNF8cLlh4Nbn4";
-      "NEXTAUTH_SECRET" = "OFSBLTEfccsu2T+PFQT6vmfFDIekvHsTOPM7cfXObTwpEbfI";
+      "MEILI_MASTER_KEY" = "${secrets.hoarder.meili}";
+      "NEXTAUTH_SECRET" = "${secrets.hoarder.nextauth}";
       "NEXTAUTH_URL" = "http://desktop:3000";
       "OLLAMA_BASE_URL" = "http://localhost:11434";
       "INFERENCE_TEXT_MODEL" = "phi3.5";
@@ -99,7 +103,7 @@
 
   # Networks
   systemd.services."docker-network-hoarder_default" = {
-    path = [ pkgs.docker ];
+    path = [pkgs.docker];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -108,8 +112,8 @@
     script = ''
       docker network inspect hoarder_default || docker network create hoarder_default
     '';
-    partOf = [ "docker-compose-hoarder-root.target" ];
-    wantedBy = [ "docker-compose-hoarder-root.target" ];
+    partOf = ["docker-compose-hoarder-root.target"];
+    wantedBy = ["docker-compose-hoarder-root.target"];
   };
 
   # Systemd services
@@ -134,27 +138,27 @@
     ];
   };
 
-  systemd.services."docker-hoarder-meilisearch" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
-    };
-    after = [
-      "docker-network-hoarder_default.service"
-    ];
-    requires = [
-      "docker-network-hoarder_default.service"
-    ];
-    partOf = [
-      "docker-compose-hoarder-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-hoarder-root.target"
-    ];
-  };
-  
+  # systemd.services."docker-hoarder-meilisearch" = {
+  #   serviceConfig = {
+  #     Restart = lib.mkOverride 90 "always";
+  #     RestartMaxDelaySec = lib.mkOverride 90 "1m";
+  #     RestartSec = lib.mkOverride 90 "100ms";
+  #     RestartSteps = lib.mkOverride 90 9;
+  #   };
+  #   after = [
+  #     "docker-network-hoarder_default.service"
+  #   ];
+  #   requires = [
+  #     "docker-network-hoarder_default.service"
+  #   ];
+  #   partOf = [
+  #     "docker-compose-hoarder-root.target"
+  #   ];
+  #   wantedBy = [
+  #     "docker-compose-hoarder-root.target"
+  #   ];
+  # };
+
   systemd.services."docker-hoarder-web" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
@@ -182,6 +186,6 @@
     unitConfig = {
       Description = "Root target generated by compose2nix.";
     };
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
   };
 }

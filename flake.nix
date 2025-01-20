@@ -54,8 +54,9 @@
         inherit image;
         inherit secrets;
 
-        pkgs-unstable = import nixpkgs {inherit system;};
         pkgs-ollama = import nixpkgs-ollama {inherit system;};
+
+        pkgs-unstable = import nixpkgs {inherit system;};
       };
       modules = [
         ./nix/server/desktop.nix
