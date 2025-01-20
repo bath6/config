@@ -12,11 +12,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     #stylix
     stylix.url = "github:danth/stylix";
     stylix-stable = {
@@ -41,15 +36,12 @@
     nixpkgs-stable,
     nixpkgs-ollama,
     home-manager,
-    home-manager-stable,
     stylix,
     stylix-stable,
     nixvim,
     nixvim-stable,
     ...
   } @ inputs: let
-    # TODO:
-    # secrets
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
   in {
@@ -68,13 +60,6 @@
         ./nix/nvim.nix
         stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
-        home-manager-stable.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jacob = import ./hm/server.nix;
-          home-manager.backupFileExtension = "backup";
-        }
       ];
     };
     # Please replace my-nixos with your hostname

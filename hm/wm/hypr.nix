@@ -1,4 +1,14 @@
-{...}: {
+{pkgs, ...}: {
+  imports = [./wybr.nix];
+
+  #enable wayland stuff
+  programs.waybar.enable = true;
+
+  home.packages = with pkgs; [
+    wl-clipboard
+    wev
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {

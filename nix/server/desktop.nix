@@ -14,7 +14,8 @@
   programs.fuse.userAllowOther = true;
 
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/greenscreen.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brogrammer.yaml";
+  #stylix.image = ../../hm/wall/milk.jpg;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
