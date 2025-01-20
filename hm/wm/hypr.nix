@@ -1,8 +1,18 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  secrets,
+  ...
+}: {
   imports = [./wybr.nix];
 
   #enable wayland stuff
   programs.waybar.enable = true;
+
+  services.wlsunset = {
+    enable = true;
+    latitude = "${secrets.lat}";
+    longitude = "${secrets.long}";
+  };
 
   home.packages = with pkgs; [
     wl-clipboard

@@ -45,6 +45,8 @@
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
   in {
+    #
+    #stable server config
     nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
@@ -62,7 +64,8 @@
         nixvim-stable.nixosModules.nixvim
       ];
     };
-    # Please replace my-nixos with your hostname
+
+    # unstable t440p
     nixosConfigurations.t440p = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
@@ -78,12 +81,6 @@
         stylix.nixosModules.stylix
         nixvim.nixosModules.nixvim
         home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jacob = import ./hm/laptop.nix;
-          home-manager.backupFileExtension = "backup";
-        }
       ];
     };
   };

@@ -1,9 +1,19 @@
-{...}: {
+{secrets, ...}: {
   imports = [
     ../head.nix
     ./hardware-t440p.nix
     ./sty.nix
   ];
+
+  home-manager = {
+    users.jacob = import ../../hm/laptop.nix;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit secrets;
+    };
+  };
 
   services.libinput.enable = true;
 
