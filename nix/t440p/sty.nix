@@ -5,7 +5,7 @@
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
   stylix.polarity = "light";
 
-  stylix.image = ../../hm/wall/milk2.png;
+  stylix.image = ../../hm/wall/test.jpg;
   stylix.imageScalingMode = "center";
 
   stylix.fonts = {

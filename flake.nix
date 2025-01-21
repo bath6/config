@@ -6,14 +6,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     # pinned Ollama 5.1
-    nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
+    #nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
+    nixpkgs-ollama.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     # home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # base16
-    base16.url = "github:SenchoPens/base16.nix";
 
     #stylix
     stylix.url = "github:danth/stylix";
@@ -40,10 +38,9 @@
     nixpkgs-ollama,
     home-manager,
     stylix,
-    stylix-stable,
     nixvim,
     nixvim-stable,
-    base16,
+    #base16,
     ...
   } @ inputs: let
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
@@ -58,7 +55,7 @@
         inherit inputs;
         inherit image;
         inherit secrets;
-        inherit serverScheme;
+        #inherit serverScheme;
 
         pkgs-ollama = import nixpkgs-ollama {inherit system;};
 
@@ -67,7 +64,7 @@
       modules = [
         ./nix/server/desktop.nix
         ./nix/nvim.nix
-        stylix-stable.nixosModules.stylix
+        #stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
       ];
     };
@@ -86,7 +83,7 @@
         ./nix/t440p/t440p.nix
         ./nix/nvim.nix
 
-        base16.nixosModule
+        #base16.nixosModule
         stylix.nixosModules.stylix
         nixvim.nixosModules.nixvim
         home-manager.nixosModules.home-manager

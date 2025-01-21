@@ -1,8 +1,4 @@
-{
-  pkgs,
-  serverScheme,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-desktop.nix
@@ -13,9 +9,8 @@
   services.xserver.enable = false;
   programs.fuse.userAllowOther = true;
 
-  stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}${serverScheme}";
-  #stylix.image = ../../hm/wall/milk.jpg;
+  # stylix.enable = true;
+  # stylix.base16Scheme = "${pkgs.base16-schemes}${serverScheme}";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

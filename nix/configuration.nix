@@ -52,6 +52,8 @@
     gotop
     nethogs
     iotop
+    dmidecode
+    gptfdisk
   ];
 
   networking.firewall = {
