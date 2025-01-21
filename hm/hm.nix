@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./wm/hypr.nix
     ./app
@@ -47,10 +43,11 @@
   programs.btop.enable = true;
 
   programs.yazi.enable = true;
+
   programs.imv = {
     enable = true;
     settings = {
-      options.background = "#${config.lib.stylix.colors.base00}";
+      #options.background = "#${config.lib.stylix.colors.base00}";
     };
   };
 }

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  serverScheme,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-desktop.nix
@@ -10,7 +14,7 @@
   programs.fuse.userAllowOther = true;
 
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brogrammer.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}${serverScheme}";
   #stylix.image = ../../hm/wall/milk.jpg;
 
   # Use the systemd-boot EFI boot loader.

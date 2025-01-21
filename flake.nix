@@ -12,6 +12,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # base16
+    base16.url = "github:SenchoPens/base16.nix";
+
     #stylix
     stylix.url = "github:danth/stylix";
     stylix-stable = {
@@ -40,10 +43,12 @@
     stylix-stable,
     nixvim,
     nixvim-stable,
+    base16,
     ...
   } @ inputs: let
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+    serverScheme = "/share/themes/rose-pine.yaml";
   in {
     #
     #stable server config
@@ -53,6 +58,7 @@
         inherit inputs;
         inherit image;
         inherit secrets;
+        inherit serverScheme;
 
         pkgs-ollama = import nixpkgs-ollama {inherit system;};
 
@@ -72,6 +78,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
+        inherit serverScheme;
       };
       modules = [
         # Import the previous configuration.nix we used,
@@ -79,6 +86,7 @@
         ./nix/t440p/t440p.nix
         ./nix/nvim.nix
 
+        base16.nixosModule
         stylix.nixosModules.stylix
         nixvim.nixosModules.nixvim
         home-manager.nixosModules.home-manager
