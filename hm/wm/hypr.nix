@@ -24,7 +24,7 @@
     settings = {
       #"animation" = "global, 0";
 
-      "monitor" = ",preferred,auto,1.25";
+      "monitor" = ",preferred,auto,1.2";
 
       general = {
         gaps_in = 0;

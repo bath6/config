@@ -48,7 +48,7 @@
   } @ inputs: let
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-    serverScheme = "/share/themes/rose-pine.yaml";
+    serverScheme = "/share/themes/brogrammer.yaml";
   in {
     #
     #stable server config
