@@ -6,8 +6,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     # pinned Ollama 5.1
-    #nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
-    nixpkgs-ollama.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
+    #nixpkgs-ollama.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     # home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -38,6 +38,7 @@
     nixpkgs-ollama,
     home-manager,
     stylix,
+    stylix-stable,
     nixvim,
     nixvim-stable,
     #base16,
@@ -45,7 +46,20 @@
   } @ inputs: let
     image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-    serverScheme = "/share/themes/brogrammer.yaml";
+    colors = {
+      laptop = {
+        #stylix tinted-theming base16
+        dark = "/share/themes/rose-pine.yaml";
+        light = "/share/themes/rose-pine-dawn.yaml";
+      };
+      server = {
+        kitty = {
+          #kitten themes
+          light = "1984 Light";
+          dark = "Brogrammer";
+        };
+      };
+    };
   in {
     #
     #stable server config
@@ -55,7 +69,7 @@
         inherit inputs;
         inherit image;
         inherit secrets;
-        #inherit serverScheme;
+        inherit colors;
 
         pkgs-ollama = import nixpkgs-ollama {inherit system;};
 
@@ -64,7 +78,7 @@
       modules = [
         ./nix/server/desktop.nix
         ./nix/nvim.nix
-        #stylix-stable.nixosModules.stylix
+        stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
       ];
     };
@@ -75,7 +89,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        inherit serverScheme;
+        inherit colors;
       };
       modules = [
         # Import the previous configuration.nix we used,

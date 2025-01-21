@@ -1,9 +1,18 @@
-{secrets, ...}: {
+{
+  secrets,
+  colors,
+  ...
+}: {
   imports = [
     ../head.nix
     ./hardware-t440p.nix
     ./sty.nix
   ];
+
+  environment.shellAliases = {
+    light = "nixos-rebuild switch --flake .#t440p --specialisation light";
+    dark = "nixos-rebuild switch --flake .#t440p";
+  };
 
   home-manager = {
     users.jacob = import ../../hm/laptop.nix;
@@ -12,6 +21,7 @@
     backupFileExtension = "backup";
     extraSpecialArgs = {
       inherit secrets;
+      inherit colors;
     };
   };
 

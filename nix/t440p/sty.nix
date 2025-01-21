@@ -1,17 +1,37 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  colors,
+  ...
+}: {
   #TODO
   # light & dark specialization
-  stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
-  stylix.polarity = "light";
 
-  stylix.image = ../../hm/wall/test.jpg;
-  stylix.imageScalingMode = "center";
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}${colors.laptop.dark}";
+    polarity = "dark";
 
-  stylix.fonts = {
-    monospace = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font Mono";
+    image = ../../hm/wall/milk2.png;
+    imageScalingMode = "center";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font Mono";
+      };
+    };
+  };
+
+  specialisation = {
+    light.configuration = {
+      stylix = lib.mkForce {
+        base16Scheme = "${pkgs.base16-schemes}${colors.laptop.light}";
+        polarity = "light";
+
+        image = ../../hm/wall/test.jpg;
+        imageScalingMode = "center";
+      };
     };
   };
 }

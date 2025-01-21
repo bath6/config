@@ -1,8 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./wm/hypr.nix
     ./app
   ];
+
+  home.shellAliases = {
+  };
 
   home.stateVersion = "25.05";
   home.username = "jacob";
@@ -47,7 +54,7 @@
   programs.imv = {
     enable = true;
     settings = {
-      #options.background = "#${config.lib.stylix.colors.base00}";
+      options.background = "#${config.lib.stylix.colors.base00}";
     };
   };
 }

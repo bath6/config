@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  colors,
+  ...
+}: {
   home.shellAliases = {
     s = "kitten ssh";
   };
@@ -10,11 +14,9 @@
       confirm_os_window_close = 0;
     };
   };
+
   home.file.".config/kitty/ssh.conf".text = ''
     hostname desktop
-    color_scheme Brogrammer
+    color_scheme ${colors.server.kitty.${config.stylix.polarity}}
   '';
-  # home.file.".config/kitty/serverStylix.conf".text = ''
-
-  # '';
 }
