@@ -1,6 +1,7 @@
 {
   secrets,
   colors,
+  pkgs,
   ...
 }: {
   imports = [
@@ -28,6 +29,10 @@
   services.blueman.enable = true;
 
   networking.hostName = "t440p";
+
+  environment.systemPackages = with pkgs; [
+    intel-gpu-tools
+  ];
 
   services.power-profiles-daemon.enable = false;
   services.tlp = {
