@@ -14,6 +14,7 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
+    monitor = ,preferred,auto,1.2
     bind = , XF86MonBrightnessDown, exec, xbacklight -5
     bind = , XF86MonBrightnessUp, exec, xbacklight +5
   '';

@@ -1,30 +1,13 @@
-{
-  pkgs,
-  secrets,
-  ...
-}: {
-  imports = [./wybr.nix];
-
-  #enable wayland stuff
-  programs.waybar.enable = true;
-
-  services.wlsunset = {
-    enable = true;
-    latitude = "${secrets.lat}";
-    longitude = "${secrets.long}";
-  };
-
-  home.packages = with pkgs; [
-    wl-clipboard
-    wev
+{...}: {
+  imports = [
+    ./wybr.nix
+    ./wayland.nix
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       #"animation" = "global, 0";
-
-      "monitor" = ",preferred,auto,1.2";
 
       general = {
         gaps_in = 0;
