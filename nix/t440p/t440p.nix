@@ -9,11 +9,6 @@
     ./sty.nix
   ];
 
-  environment.shellAliases = {
-    light = "nixos-rebuild switch --flake .#t440p --specialisation light";
-    dark = "nixos-rebuild switch --flake .#t440p";
-  };
-
   home-manager = {
     users.jacob = import ../../hm/laptop.nix;
     useGlobalPkgs = true;

@@ -54,6 +54,7 @@
     iotop
     dmidecode
     gptfdisk
+    noto-fonts-color-emoji
   ];
 
   networking.firewall = {

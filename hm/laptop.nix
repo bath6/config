@@ -2,6 +2,10 @@
   imports = [
     ./hm.nix
   ];
+  home.shellAliases = {
+    light = "sudo nixos-rebuild switch --flake .#t440p --specialisation light";
+    dark = "sudo nixos-rebuild switch --flake .#t440p";
+  };
 
   programs.git = {
     enable = true;

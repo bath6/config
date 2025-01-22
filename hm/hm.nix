@@ -38,13 +38,31 @@
     noto-fonts-color-emoji
     mpv
     telegram-desktop
+    jellyfin-media-player
+    obsidian
+    nerd-fonts.symbols-only
+
+    # (writeShellScriptBin "obs" ''
+    #   obsidian --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --ozone-platform=wayland
+    # '')
   ];
+
+  # .desktop files for rofi
+  xdg.desktopEntries = {
+    obsidian = {
+      name = "Obsidian";
+      genericName = "Notes";
+      exec = "obsidian --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --ozone-platform=wayland";
+      categories = ["Application"];
+    };
+  };
 
   fonts.fontconfig.enable = true;
 
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
+    terminal = "kitty";
   };
 
   programs.btop.enable = true;

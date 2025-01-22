@@ -9,6 +9,10 @@
   services.xserver.enable = false;
   programs.fuse.userAllowOther = true;
 
+  # use kitten ssh colors in vim
+  programs.nixvim.opts = {
+    termguicolors = false;
+  };
   # stylix.enable = true;
   # stylix.base16Scheme = "${pkgs.base16-schemes}${serverScheme}";
 
