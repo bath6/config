@@ -13,6 +13,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # jovian
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
     #stylix
     stylix.url = "github:danth/stylix";
     stylix-stable = {
@@ -37,6 +40,7 @@
     nixpkgs-stable,
     nixpkgs-ollama,
     home-manager,
+    jovian,
     stylix,
     stylix-stable,
     nixvim,
@@ -44,8 +48,9 @@
     #base16,
     ...
   } @ inputs: let
-    image = builtins.fromJSON (builtins.readFile "${self}/nix/server/oci/version.json");
+    image = builtins.fromJSON (builtins.readFile "${self}/nix/desktop/oci/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+    system = "x86_64-linux";
     colors = {
       laptop = {
         #stylix tinted-theming base16
@@ -63,8 +68,7 @@
   in {
     #
     #stable server config
-    nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem rec {
-      system = "x86_64-linux";
+    nixosConfigurations.desktop = nixpkgs-stable.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
         inherit image;
@@ -76,7 +80,7 @@
         pkgs-unstable = import nixpkgs {inherit system;};
       };
       modules = [
-        ./nix/server/desktop.nix
+        ./nix/desktop/desktop.nix
         ./nix/nvim.nix
         stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
@@ -85,7 +89,6 @@
 
     # unstable t440p
     nixosConfigurations.t440p = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
         inherit secrets;
@@ -101,6 +104,12 @@
         stylix.nixosModules.stylix
         nixvim.nixosModules.nixvim
         home-manager.nixosModules.home-manager
+      ];
+    };
+    nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
+      modules = [
+        ./nix/sd/sd.nix
+        jovian.nixosModules.jovian
       ];
     };
   };

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-desktop.nix
@@ -6,6 +10,8 @@
     ./llm.nix
     ../configuration.nix
   ];
+  system.stateVersion = lib.mkForce "24.11";
+
   services.xserver.enable = false;
   programs.fuse.userAllowOther = true;
 
