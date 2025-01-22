@@ -21,6 +21,14 @@
     };
   };
 
+  services.logind = {
+    lidSwitchExternalPower = "ignore";
+    #lidSwitch = "ignore";
+    extraConfig = ''
+      HandlePowerKey=ignore
+    '';
+  };
+
   services.libinput.enable = true;
 
   hardware.acpilight.enable = true;

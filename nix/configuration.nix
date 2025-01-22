@@ -55,6 +55,7 @@
     dmidecode
     gptfdisk
     noto-fonts-color-emoji
+    smartmontools
   ];
 
   networking.firewall = {

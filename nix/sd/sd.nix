@@ -5,6 +5,8 @@
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  services.desktopManager.plasma6.enable = true;
+  boot.plymouth.enable = true;
 
   networking.hostName = "sd";
 
@@ -14,8 +16,8 @@
     steam = {
       enable = true;
       autoStart = true;
-      updater.splash = "jovian";
       user = "jacob";
+      desktopSession = "plasma";
     };
   };
 }
