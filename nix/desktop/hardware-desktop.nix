@@ -36,9 +36,7 @@
     serviceConfig = {
       User = "jacob";
       Group = "users";
-      #ExecStart = "${pkgs.openrgb}/bin/openrgb -p off";
-      ExecStart = "openrgb -p off";
-      Type = "oneshot";
+      ExecStart = "${pkgs.openrgb}/bin/openrgb -p off";
     };
     wantedBy = ["multi-user.target"];
     after = ["openrgb.service"];
