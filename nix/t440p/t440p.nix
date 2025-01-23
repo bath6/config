@@ -10,6 +10,12 @@
     ./sty.nix
   ];
 
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
+  programs.hyprlock.enable = true;
+
   home-manager = {
     users.jacob = import ../../hm/laptop.nix;
     useGlobalPkgs = true;
@@ -22,11 +28,8 @@
   };
 
   services.logind = {
-    lidSwitchExternalPower = "ignore";
-    #lidSwitch = "ignore";
-    extraConfig = ''
-      HandlePowerKey=ignore
-    '';
+    powerKey = "ignore";
+    powerKeyLongPress = "ignore";
   };
 
   services.libinput.enable = true;

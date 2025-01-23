@@ -2,6 +2,7 @@
   imports = [
     ./wybr.nix
     ./wayland.nix
+    ./hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -24,6 +25,7 @@
         "$mod, Return, exec, kitty"
         "$mod, d, exec, rofi -show drun"
         "$mod$Shift_L, c, killactive,"
+        ", XF86PowerOff, exec, hyprlock"
       ];
     };
 
