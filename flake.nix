@@ -48,7 +48,7 @@
     #base16,
     ...
   } @ inputs: let
-    image = builtins.fromJSON (builtins.readFile "${self}/nix/desktop/oci/version.json");
+    image = builtins.fromJSON (builtins.readFile "${self}/image.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
     colors = {

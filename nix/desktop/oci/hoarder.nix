@@ -15,7 +15,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."hoarder-chrome" = {
-    image = "${image.chrome}";
+    image = "${image.hoarder-chrome}";
     ports = ["9222:9222"];
     cmd = ["--no-sandbox" "--disable-gpu" "--disable-dev-shm-usage" "--remote-debugging-address=0.0.0.0" "--remote-debugging-port=9222" "--hide-scrollbars"];
     log-driver = "journald";
@@ -29,7 +29,7 @@
   };
 
   virtualisation.oci-containers.containers."hoarder-meilisearch" = {
-    image = "${image.meilisearch}";
+    image = "${image.hoarder-meilisearch}";
     ports = ["7700:7700"];
     environment = {
       "HOARDER_VERSION" = "release";
@@ -52,7 +52,7 @@
   };
 
   virtualisation.oci-containers.containers."hoarder-web" = {
-    image = "ghcr.io/hoarder-app/hoarder:release";
+    image = "${image.hoarder-web}";
     environment = {
       "BROWSER_WEB_URL" = "http://desktop:9222";
       "DATA_DIR" = "/data";

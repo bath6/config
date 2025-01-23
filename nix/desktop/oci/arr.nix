@@ -72,7 +72,7 @@
     };
     qbpt = {
       dependsOn = ["gluetun"];
-      image = "${image.qbittorrent}";
+      image = "${image.qbpt}";
       extraOptions = ["--network=container:gluetun"];
       environment = {
         PUID = "1000";
@@ -152,7 +152,7 @@
     #jellyfin & jellyseer in tailscale
 
     jellyscale = {
-      image = "${image.tailscale}";
+      image = "${image.jellyscale}";
       extraOptions = [
         "--cap-add=NET_ADMIN"
         "--device=/dev/net/tun:/dev/net/tun:rwm"
