@@ -17,6 +17,7 @@
       enable = true;
       autoStart = true;
       user = "jacob";
+      updater.splash = "steamos";
       desktopSession = "plasma";
     };
   };

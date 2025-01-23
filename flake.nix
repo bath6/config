@@ -107,6 +107,9 @@
       ];
     };
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        pkgs-ollama = import nixpkgs-ollama {inherit system;};
+      };
       modules = [
         ./nix/sd/sd.nix
         jovian.nixosModules.jovian
