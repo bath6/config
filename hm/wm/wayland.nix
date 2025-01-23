@@ -9,6 +9,8 @@
     longitude = "${secrets.long}";
   };
 
+  services.mako.enable = true;
+
   # wayland packages
   home.packages = with pkgs; [
     wl-clipboard

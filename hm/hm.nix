@@ -66,8 +66,8 @@
   };
 
   programs.btop.enable = true;
-
   programs.yazi.enable = true;
+  programs.fastfetch.enable = true;
 
   programs.imv = {
     enable = true;

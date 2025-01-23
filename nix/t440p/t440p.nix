@@ -49,7 +49,7 @@
   services.tlp = {
     enable = true;
     settings = {
-      INTEL_GPU_MIN_FREQ_ON_AC = 700;
+      INTEL_GPU_MIN_FREQ_ON_AC = 1300;
       INTEL_GPU_MIN_FREQ_ON_BAT = 200;
 
       INTEL_GPU_MAX_FREQ_ON_AC = 1300;

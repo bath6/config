@@ -12,8 +12,7 @@
     base16Scheme = "${pkgs.base16-schemes}${colors.laptop.dark}";
     polarity = "dark";
 
-    #image = ../../hm/wall/milk2.png;
-    image = ../../hm/wall/milk.jpg;
+    image = ../../hm/wall/milk2.png;
     imageScalingMode = "center";
 
     fonts = {

@@ -9,16 +9,31 @@
     enable = true;
     settings = {
       #"animation" = "global, 0";
+      bezier = "test, 0.455, 0.03, 0.515, 0.955";
+      animation = [
+        "workspaces, 1, 3, test"
+        "windows, 1, 1, test"
+        "windowsMove, 1, 3, test"
+      ];
+
+      animations.first_launch_animation = false;
+      dwindle.preserve_split = true;
 
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        no_border_on_floating = true;
+        gaps_in = 2;
+        gaps_out = 4;
       };
 
       decoration = {
+        rounding = 3;
+        #rounding_power = 3.0;
+        inactive_opacity = 0.9;
         blur.enabled = false;
+        shadow.enabled = false;
       };
 
+      exec-once = "waybar";
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
       bind = [
