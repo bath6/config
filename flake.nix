@@ -64,6 +64,10 @@
           dark = "Brogrammer";
         };
       };
+      sd = {
+        light = "Man Page";
+        dark = "Cyberpunk";
+      };
     };
   in {
     #

@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-sd.nix
     ../configuration.nix
@@ -6,7 +6,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.desktopManager.plasma6.enable = true;
-  boot.plymouth.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    xivlauncher
+  ];
 
   networking.hostName = "sd";
 

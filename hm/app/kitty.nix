@@ -18,5 +18,8 @@
   home.file.".config/kitty/ssh.conf".text = ''
     hostname desktop
     color_scheme ${colors.server.kitty.${config.stylix.polarity}}
+
+    hostname sd
+    color_scheme ${colors.sd.${config.stylix.polarity}}
   '';
 }
