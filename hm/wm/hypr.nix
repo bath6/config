@@ -2,7 +2,7 @@
   imports = [
     ./wybr.nix
     ./wayland.nix
-    ./hyprlock.nix
+    ./hyprutils.nix
   ];
 
   wayland.windowManager.hyprland = {

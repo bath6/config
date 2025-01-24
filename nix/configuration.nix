@@ -58,8 +58,7 @@
     smartmontools
     stress
     s-tui
-    #geekbench
-    phoronix-test-suite
+    geekbench
   ];
 
   networking.firewall = {
