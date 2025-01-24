@@ -64,7 +64,7 @@
       };
       volumes = [
         "/docker/arr/qbittorrent:/config"
-        "/media/torrents:/data/torrents"
+        "/media/data/torrents:/data/torrents"
       ];
       labels = {
         "wud.tag.exclude" = "linux";
@@ -83,7 +83,7 @@
       };
       volumes = [
         "/docker/arr/qbpt:/config"
-        "/media/torrents:/data/torrents"
+        "/media/data/torrents:/data/torrents"
       ];
       labels = {
         "wud.tag.exclude" = "linux";
@@ -103,7 +103,7 @@
       };
       volumes = [
         "/docker/arr/radarr:/config"
-        "/media:/data"
+        "/media/data:/data"
       ];
       labels = {
         "wud.tag.include" = "[0-9]\\.[0-9]";
@@ -122,7 +122,7 @@
       };
       volumes = [
         "/docker/arr/sonarr:/config"
-        "/media:/data"
+        "/media/data:/data"
       ];
       labels = {
         "wud.tag.include" = "[0-9]\\.[0-9]";
@@ -205,7 +205,7 @@
       };
       volumes = [
         "/docker/arr/jellyfin:/config"
-        "/media/media:/media:rw"
+        "/media/data/media:/media:rw"
       ];
       labels = {
         "wud.tag.include" = "[0-9]\\.[0-9]";
