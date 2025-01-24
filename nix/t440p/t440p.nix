@@ -43,6 +43,7 @@
 
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
+    undervolt
   ];
 
   services.power-profiles-daemon.enable = false;

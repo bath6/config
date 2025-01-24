@@ -56,6 +56,10 @@
     gptfdisk
     noto-fonts-color-emoji
     smartmontools
+    stress
+    s-tui
+    #geekbench
+    phoronix-test-suite
   ];
 
   networking.firewall = {
