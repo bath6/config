@@ -10,6 +10,7 @@
   ];
 
   #future containers??
+  #calibre web
   #linkwarden
   #prometheus+grafana?
   virtualisation.docker.enable = true;
@@ -135,5 +136,18 @@
         "/docker/lubelogger:/App/data"
       ];
     };
+    kiwix = {
+      image = "${image.kiwix}";
+      ports = ["8000:8080"];
+      volumes = [
+        "/media/data/torrents/zim:/data"
+      ];
+      cmd = ["*.zim"];
+    };
+    #wait for key
+    # fishnet = {
+    #   image = "${image.fishnet}";
+
+    # };
   };
 }

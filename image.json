@@ -17,5 +17,6 @@
   "scrutiny": "ghcr.io/analogj/scrutiny:v0.8.1-omnibus",
   "sonarr": "linuxserver/sonarr:4.0.12",
   "uptime-kuma": "louislam/uptime-kuma:1.23.16-debian",
-  "wud": "getwud/wud:8.0.1"
+  "wud": "getwud/wud:8.0.1",
+  "kiwix": "ghcr.io/kiwix/kiwix-serve:3.7.0"
 }
