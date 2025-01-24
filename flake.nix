@@ -116,6 +116,7 @@
       };
       modules = [
         ./nix/sd/sd.nix
+        stylix.nixosModules.stylix
         jovian.nixosModules.jovian
       ];
     };
