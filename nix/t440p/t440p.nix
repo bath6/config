@@ -27,6 +27,15 @@
     };
   };
 
+  #autologin and launch hyprland
+  services.getty = {
+    autologinUser = "jacob";
+    autologinOnce = true;
+  };
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && Hyprland 
+  '';
+
   services.logind = {
     powerKey = "ignore";
     powerKeyLongPress = "ignore";
