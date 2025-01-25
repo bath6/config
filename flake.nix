@@ -54,7 +54,7 @@
     colors = {
       laptop = {
         #stylix tinted-theming base16
-        dark = "/share/themes/rose-pine-moon.yaml";
+        dark = "/share/themes/atelier-plateau.yaml";
         light = "/share/themes/rose-pine-dawn.yaml";
       };
       server = {

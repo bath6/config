@@ -29,8 +29,9 @@
     recursive = true;
   };
 
+  programs.firefox.enable = true;
+
   home.packages = with pkgs; [
-    firefox
     baobab
     pcmanfm
     pulsemixer
@@ -58,12 +59,6 @@
   };
 
   fonts.fontconfig.enable = true;
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    terminal = "kitty";
-  };
 
   programs.btop.enable = true;
   programs.yazi.enable = true;

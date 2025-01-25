@@ -22,6 +22,12 @@
     longitude = "${secrets.long}";
   };
 
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    terminal = "kitty";
+  };
+
   programs.waybar.enable = true;
   programs.waybar.style = ''
     #workspaces button.active {
