@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./wybr.nix
     ./wayland.nix
     ./hyprutils.nix
   ];
@@ -40,7 +39,7 @@
         "$mod, Return, exec, kitty"
         "$mod, d, exec, rofi -show drun"
         "$mod$Shift_L, c, killactive,"
-        ", XF86PowerOff, exec, hyprlock"
+        ", XF86PowerOff, exec, wlogout"
       ];
     };
 
