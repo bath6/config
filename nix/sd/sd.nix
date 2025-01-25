@@ -3,7 +3,10 @@
     ./hardware-sd.nix
     ../configuration.nix
   ];
+
+  boot.loader.timeout = 1;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "5";
   boot.loader.efi.canTouchEfiVariables = true;
   services.desktopManager.plasma6.enable = true;
 
