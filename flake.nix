@@ -50,25 +50,8 @@
   } @ inputs: let
     image = builtins.fromJSON (builtins.readFile "${self}/image.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+    colors = import ./colors.nix;
     system = "x86_64-linux";
-    colors = {
-      laptop = {
-        #stylix tinted-theming base16
-        dark = "/share/themes/atelier-plateau.yaml";
-        light = "/share/themes/rose-pine-dawn.yaml";
-      };
-      server = {
-        kitty = {
-          #kitten themes
-          light = "1984 Light";
-          dark = "Space Gray Eighties Dull";
-        };
-      };
-      sd = {
-        light = "Man Page";
-        dark = "Cyberpunk";
-      };
-    };
   in {
     #
     #stable server config
@@ -111,9 +94,6 @@
       ];
     };
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        pkgs-ollama = import nixpkgs-ollama {inherit system;};
-      };
       modules = [
         ./nix/sd/sd.nix
         stylix.nixosModules.stylix
