@@ -10,6 +10,8 @@
     ./sty.nix
   ];
 
+  services.resolved.enable = true;
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -33,7 +35,7 @@
     autologinOnce = true;
   };
   environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && Hyprland 
+    [[ "$(tty)" == /dev/tty1 ]] && Hyprland
   '';
 
   services.logind = {
