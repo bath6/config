@@ -7,7 +7,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     # pinned Ollama 5.1
     nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
-    #nixpkgs-ollama.url = "github:NixOS/nixpkgs/master";
+    #nixpkgs-ollama.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # home manager
     home-manager.url = "github:nix-community/home-manager";
