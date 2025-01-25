@@ -1,5 +1,5 @@
 {
-  pkgs,
+  #pkgs,
   lib,
   ...
 }: {
@@ -29,6 +29,5 @@
   networking.hostName = "desktop"; # Define your hostname.
 
   environment.systemPackages = [
-    pkgs.gocryptfs
   ];
 }

@@ -59,6 +59,7 @@
     stress
     s-tui
     geekbench
+    gocryptfs
   ];
 
   networking.firewall = {
