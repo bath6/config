@@ -47,13 +47,19 @@
     nixvim-stable,
     #base16,
     ...
-  } @ inputs: let
+  } @ inputs:
+  #
+  let
     image = builtins.fromJSON (builtins.readFile "${self}/image.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     colors = import ./colors.nix;
     system = "x86_64-linux";
+    defModules = [
+      nixvim.nixosModules.nixvim
+      home-manager.nixosModules.home-manager
+      stylix.nixosModules.stylix
+    ];
   in {
-    #
     #stable server config
     nixosConfigurations.desktop = nixpkgs-stable.lib.nixosSystem {
       specialArgs = {
@@ -68,7 +74,6 @@
       };
       modules = [
         ./nix/desktop/desktop.nix
-        ./nix/nvim.nix
         stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
       ];
@@ -81,24 +86,21 @@
         inherit secrets;
         inherit colors;
       };
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./nix/t440p/t440p.nix
-        ./nix/nvim.nix
-
-        #base16.nixosModule
-        stylix.nixosModules.stylix
-        nixvim.nixosModules.nixvim
-        home-manager.nixosModules.home-manager
-      ];
+      modules =
+        defModules
+        ++ [
+          ./nix/t440p/t440p.nix
+        ];
     };
+
+    #Steam deck jovian nixos
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./nix/sd/sd.nix
-        stylix.nixosModules.stylix
-        jovian.nixosModules.jovian
-      ];
+      modules =
+        defModules
+        ++ [
+          ./nix/sd/sd.nix
+          jovian.nixosModules.jovian
+        ];
     };
   };
 }
