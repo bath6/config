@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-freeimage,
+  ...
+}: {
   imports = [
     ./hardware-sd.nix
     ../configuration.nix
@@ -10,8 +14,20 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.desktopManager.plasma6.enable = true;
 
+  #use patched freeimage, less cves?
+  nixpkgs.overlays = [
+    (self: super: {
+      freeimage = pkgs-freeimage.freeimage;
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     xivlauncher
+    heroic
+    steam-rom-manager
+    dolphin-emu
+    pcsx2
+    emulationstation-de
   ];
 
   networking.hostName = "sd";

@@ -386,6 +386,22 @@
         "type": "github"
       }
     },
+    "freeimage": {
+      "locked": {
+        "lastModified": 1735842350,
+        "narHash": "sha256-f5YzuFlc5eX33p3W+Mtfz4mtLdOLHHhj7Rw/mUieIuo=",
+        "owner": "usertam",
+        "repo": "nixpkgs",
+        "rev": "d03753137f2435239665a28720e63986cbfe682f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "usertam",
+        "ref": "patch/freeimage",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -1079,6 +1095,7 @@
     },
     "root": {
       "inputs": {
+        "freeimage": "freeimage",
         "home-manager": "home-manager",
         "jovian": "jovian",
         "nixpkgs": "nixpkgs_2",

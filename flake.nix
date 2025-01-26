@@ -8,6 +8,8 @@
     # pinned Ollama 5.1
     nixpkgs-ollama.url = "nixpkgs/8f3e1f807051e32d8c95cd12b9b421623850a34d";
     #nixpkgs-ollama.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #patched free image
+    freeimage.url = "github:usertam/nixpkgs/patch/freeimage";
 
     # home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -39,6 +41,7 @@
     nixpkgs,
     nixpkgs-stable,
     nixpkgs-ollama,
+    freeimage,
     home-manager,
     jovian,
     stylix,
@@ -95,6 +98,14 @@
 
     #Steam deck jovian nixos
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        pkgs-freeimage = import freeimage {
+          inherit system;
+          config.permittedInsecurePackages = [
+            "freeimage-unstable-2024-04-18"
+          ];
+        };
+      };
       modules =
         defModules
         ++ [
