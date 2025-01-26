@@ -43,6 +43,7 @@
     sysstat
     htop
     unzip
+    p7zip
     bottom
     git
     git-crypt

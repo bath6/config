@@ -1,33 +1,12 @@
-{
-  secrets,
-  colors,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../head.nix
     ./hardware-t440p.nix
     ./sty.nix
   ];
 
+  #for wireguard
   services.resolved.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
-  programs.hyprlock.enable = true;
-
-  home-manager = {
-    users.jacob = import ../../hm/laptop.nix;
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    extraSpecialArgs = {
-      inherit secrets;
-      inherit colors;
-    };
-  };
 
   #autologin and launch hyprland
   services.getty = {

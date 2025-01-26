@@ -12,10 +12,13 @@
     wl-clipboard
     wev
     grim
+    rofimoji
   ];
 
+  #notifications
   services.mako.enable = true;
 
+  #changes K at night
   services.wlsunset = {
     enable = true;
     latitude = "${secrets.lat}";
@@ -24,7 +27,7 @@
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    #package = pkgs.rofi-wayland;
     terminal = "kitty";
   };
 
