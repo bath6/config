@@ -25,10 +25,21 @@
     xivlauncher
     heroic
     steam-rom-manager
+    #gc wii
     dolphin-emu
+    #ps2
     pcsx2
+    #ps3
+    rpcs3
+
     emulationstation-de
   ];
+
+  services.sunshine = {
+    enable = true;
+    autoStart = false;
+    capSysAdmin = true;
+  };
 
   networking.hostName = "sd";
 

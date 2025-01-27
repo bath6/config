@@ -53,7 +53,7 @@
   } @ inputs:
   #
   let
-    image = builtins.fromJSON (builtins.readFile "${self}/image.json");
+    image = builtins.fromJSON (builtins.readFile "${self}/version.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     colors = import ./colors.nix;
     system = "x86_64-linux";

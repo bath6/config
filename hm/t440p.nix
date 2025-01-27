@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hm.nix
   ];
@@ -6,6 +6,10 @@
     light = "sudo nixos-rebuild switch --flake .#t440p --specialisation light";
     dark = "sudo nixos-rebuild switch --flake .#t440p";
   };
+
+  home.packages = with pkgs; [
+    moonlight-qt
+  ];
 
   programs.git = {
     enable = true;

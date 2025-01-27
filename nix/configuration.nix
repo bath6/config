@@ -62,6 +62,7 @@
     s-tui
     geekbench
     gocryptfs
+    nmap
   ];
 
   networking.firewall = {

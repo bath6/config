@@ -20,5 +20,5 @@ for i in j:
 #create pretty json from dict
 j = json.dumps(version, indent=2)
 #write to version.json
-with open("version.json", "w") as outfile:
+with open("image.json", "w") as outfile:
     outfile.write(j)
