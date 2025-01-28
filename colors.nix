@@ -13,5 +13,6 @@
   sd = {
     light = "Man Page";
     dark = "Cyberpunk";
+    stylix = "/share/themes/rose-pine-moon.yaml";
   };
 }

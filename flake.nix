@@ -99,6 +99,8 @@
     #Steam deck jovian nixos
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
       specialArgs = {
+        inherit colors;
+        inherit secrets;
         pkgs-freeimage = import freeimage {
           inherit system;
           config.permittedInsecurePackages = [

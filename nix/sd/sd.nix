@@ -1,6 +1,8 @@
 {
   pkgs,
   pkgs-freeimage,
+  secrets,
+  colors,
   ...
 }: {
   imports = [
@@ -52,6 +54,33 @@
       user = "jacob";
       updater.splash = "steamos";
       desktopSession = "plasma";
+    };
+  };
+
+  home-manager = {
+    users.jacob = import ./hm;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit secrets;
+      inherit colors;
+    };
+  };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}${colors.sd.stylix}";
+    polarity = "dark";
+
+    image = ../../hm/wall/milk2.png;
+    imageScalingMode = "center";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font Mono";
+      };
     };
   };
 }

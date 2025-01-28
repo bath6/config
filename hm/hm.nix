@@ -30,6 +30,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.zathura.enable = true;
 
   home.packages = with pkgs; [
     baobab
