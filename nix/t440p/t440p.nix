@@ -36,6 +36,11 @@
     undervolt
   ];
 
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["jacob"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
