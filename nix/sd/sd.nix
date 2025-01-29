@@ -4,7 +4,12 @@
   secrets,
   colors,
   ...
-}: {
+}: let
+  retroarchWithCores = pkgs.retroarch.withCores (cores:
+    with cores; [
+      opera
+    ]);
+in {
   imports = [
     ./hardware-sd.nix
     ../configuration.nix
@@ -34,8 +39,12 @@
     #ps3
     rpcs3
 
+    #retroarretroarchWithCores
+    retroarchWithCores
     emulationstation-de
   ];
+
+  programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
 
   services.sunshine = {
     enable = true;
