@@ -4,6 +4,12 @@
     enable = true;
     browser = "mpv";
 
+    extraConfig = ''
+      color info black cyan
+      color listfocus green black
+      color listfocus_unread green black
+    '';
+
     urls = [
       {
         tags = ["podcast"];
