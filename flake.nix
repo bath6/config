@@ -79,6 +79,16 @@
         ./nix/desktop/desktop.nix
         stylix-stable.nixosModules.stylix
         nixvim-stable.nixosModules.nixvim
+        {boot.binfmt.emulatedSystems = ["aarch64-linux"];}
+      ];
+    };
+    # stable potato
+    nixosConfigurations.potato = nixpkgs-stable.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        "${nixpkgs-stable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        nixvim-stable.nixosModules.nixvim
+        ./nix/potato/potato.nix
       ];
     };
 
@@ -93,6 +103,7 @@
         defModules
         ++ [
           ./nix/t440p/t440p.nix
+          {boot.binfmt.emulatedSystems = ["aarch64-linux"];}
         ];
     };
 
