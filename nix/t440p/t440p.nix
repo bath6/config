@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
     undervolt
+    bottles
   ];
 
   programs.virt-manager.enable = true;

@@ -85,6 +85,9 @@
     # stable potato
     nixosConfigurations.potato = nixpkgs-stable.lib.nixosSystem {
       system = "aarch64-linux";
+      specialArgs = {
+        inherit secrets;
+      };
       modules = [
         "${nixpkgs-stable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
         nixvim-stable.nixosModules.nixvim
