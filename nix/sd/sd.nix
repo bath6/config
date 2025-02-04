@@ -3,6 +3,7 @@
   pkgs-freeimage,
   secrets,
   colors,
+  self,
   ...
 }: let
   retroarchWithCores = pkgs.retroarch.withCores (cores:
@@ -70,7 +71,7 @@ in {
     users.jacob = import ./hm;
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "backup";
+    backupFileExtension = builtins.toString self.lastModified;
     extraSpecialArgs = {
       inherit secrets;
       inherit colors;

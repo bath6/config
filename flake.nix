@@ -53,7 +53,7 @@
   } @ inputs:
   #
   let
-    image = builtins.fromJSON (builtins.readFile "${self}/version.json");
+    image = builtins.fromJSON (builtins.readFile "${self}/image.json");
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     colors = import ./colors.nix;
     system = "x86_64-linux";
@@ -115,6 +115,7 @@
       specialArgs = {
         inherit colors;
         inherit secrets;
+        inherit self;
         pkgs-freeimage = import freeimage {
           inherit system;
           config.permittedInsecurePackages = [

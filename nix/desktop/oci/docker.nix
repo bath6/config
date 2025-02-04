@@ -33,6 +33,7 @@
       ];
       labels = {
         "wud.tag.include" = "v[0-9]";
+        "wud.tag.exclude" = "feature";
         "traefik.http.routers.homepage.rule" = "PathPrefix(`/homepage`)";
         "traefik.enable" = "true";
       };
