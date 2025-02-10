@@ -147,9 +147,11 @@
       cmd = ["*.zim"];
     };
     #wait for key
-    # fishnet = {
-    #   image = "${image.fishnet}";
-
-    # };
+    fishnet = {
+      image = "${image.fishnet}";
+      environment = {
+        KEY = "${secrets.lichesskey}";
+      };
+    };
   };
 }
