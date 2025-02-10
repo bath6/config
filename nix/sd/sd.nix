@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-freeimage,
+  pkgs-stable,
   secrets,
   colors,
   self,
@@ -26,6 +27,7 @@ in {
   nixpkgs.overlays = [
     (self: super: {
       freeimage = pkgs-freeimage.freeimage;
+      libgit2 = pkgs-stable.libgit2;
     })
   ];
 
