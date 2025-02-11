@@ -4,14 +4,8 @@
   pkgs-stable,
   secrets,
   colors,
-  self,
   ...
-}: let
-  retroarchWithCores = pkgs.retroarch.withCores (cores:
-    with cores; [
-      opera
-    ]);
-in {
+}: {
   imports = [
     ./hardware-sd.nix
     ../configuration.nix
@@ -33,18 +27,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     xivlauncher
-    heroic
-    steam-rom-manager
-    #gc wii
-    dolphin-emu
-    #ps2
-    pcsx2
-    #ps3
-    rpcs3
-
-    #retroarretroarchWithCores
-    retroarchWithCores
-    emulationstation-de
   ];
 
   programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
@@ -65,19 +47,25 @@ in {
       autoStart = true;
       user = "jacob";
       updater.splash = "steamos";
-      desktopSession = "plasma";
+      desktopSession = "hyprland-uwsm";
     };
   };
 
-  home-manager = {
-    users.jacob = import ./hm;
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = builtins.toString self.lastModified;
-    extraSpecialArgs = {
-      inherit secrets;
-      inherit colors;
-    };
+  # home-manager = {
+  #   users.jacob = import ./hm;
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   #backupFileExtension = builtins.toString self.lastModified
+  #   backupFileExtension = "test";
+  #   extraSpecialArgs = {
+  #     inherit secrets;
+  #     inherit colors;
+  #   };
+  # };
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
   };
 
   stylix = {
