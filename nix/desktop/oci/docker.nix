@@ -146,11 +146,12 @@
       ];
       cmd = ["*.zim"];
     };
-    #wait for key
+    #lichess nnue
     fishnet = {
       image = "${image.fishnet}";
       environment = {
         KEY = "${secrets.lichesskey}";
+        CORES = "12";
       };
     };
   };
