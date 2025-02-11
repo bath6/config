@@ -25,9 +25,6 @@
       ports = [
         #Qbittorrent
         "${secrets.tsip}:8079:8079"
-        #qbpt
-        "${secrets.tsip}:8081:8081"
-        "21276:21276"
         "46764:46764"
       ];
       extraOptions = [
@@ -41,7 +38,7 @@
         WIREGUARD_PRESHARED_KEY = "${secrets.gluetun.preshared_key}";
         WIREGUARD_ADDRESSES = "${secrets.gluetun.ip}";
         SERVER_COUNTRIES = "Switzerland,Sweden";
-        FIREWALL_VPN_INPUT_PORTS = "21276,46764";
+        FIREWALL_VPN_INPUT_PORTS = "46764";
         #DOT_PROVIDERS = "quad9,quadrant,google,cloudflare";
         DOT = "off";
         DNS_ADDRESS = "10.128.0.1";
@@ -70,10 +67,37 @@
         "wud.tag.exclude" = "linux";
       };
     };
+    gluetun2 = {
+      image = "${image.gluetun}";
+      ports = [
+        #qbpt
+        "${secrets.tsip}:8081:8081"
+        "21276:21276"
+      ];
+      extraOptions = [
+        "--network=gluetun_network"
+        "--cap-add=NET_ADMIN"
+      ];
+      environment = {
+        VPN_SERVICE_PROVIDER = "airvpn";
+        VPN_TYPE = "wireguard";
+        WIREGUARD_PRIVATE_KEY = "${secrets.gluetun2.private_key}";
+        WIREGUARD_PRESHARED_KEY = "${secrets.gluetun2.preshared_key}";
+        WIREGUARD_ADDRESSES = "${secrets.gluetun2.ip}";
+        SERVER_COUNTRIES = "Switzerland,Sweden";
+        FIREWALL_VPN_INPUT_PORTS = "21276";
+        #DOT_PROVIDERS = "quad9,quadrant,google,cloudflare";
+        DOT = "off";
+        DNS_ADDRESS = "10.128.0.1";
+      };
+      labels = {
+        "wud.tag.include" = "v[0-9].*";
+      };
+    };
     qbpt = {
       dependsOn = ["gluetun"];
       image = "${image.qbpt}";
-      extraOptions = ["--network=container:gluetun"];
+      extraOptions = ["--network=container:gluetun2"];
       environment = {
         PUID = "1000";
         PGID = "1000";
