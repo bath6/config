@@ -1,7 +1,7 @@
 # nix/colors.nix
 {
   laptop = {
-    dark = "/share/themes/atelier-plateau.yaml";
+    dark = "/share/themes/heetch.yaml";
     light = "/share/themes/rose-pine-dawn.yaml";
   };
   server = {
