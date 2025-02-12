@@ -6,7 +6,12 @@
   colors,
   self,
   ...
-}: {
+}: let
+  #add random buildInput to xivlauncher to force rebuild because bin doesn't work
+  xivbuild = pkgs.xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
+    buildInputs = previousAttrs.buildInputs ++ [pkgs.hello];
+  });
+in {
   imports = [
     ./hardware-sd.nix
     ../configuration.nix
@@ -28,8 +33,8 @@
     })
   ];
 
-  environment.systemPackages = with pkgs; [
-    xivlauncher
+  environment.systemPackages = [
+    xivbuild
   ];
 
   #programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
