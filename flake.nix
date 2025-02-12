@@ -116,7 +116,7 @@
       specialArgs = {
         inherit colors;
         inherit secrets;
-        #inherit self;
+        inherit self;
         pkgs-stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;

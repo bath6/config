@@ -24,7 +24,7 @@ in {
     noto-fonts-color-emoji
     mpv
 
-    xivlauncher
+    protonup-ng
 
     heroic
     steam-rom-manager

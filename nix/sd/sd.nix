@@ -4,6 +4,7 @@
   pkgs-stable,
   secrets,
   colors,
+  self,
   ...
 }: {
   imports = [
@@ -17,6 +18,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.desktopManager.plasma6.enable = true;
 
+  networking.networkmanager.wifi.powersave = false;
+
   #use patched freeimage, less cves?
   nixpkgs.overlays = [
     (self: super: {
@@ -29,7 +32,7 @@
     xivlauncher
   ];
 
-  programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
+  #programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
 
   services.sunshine = {
     enable = true;
@@ -51,17 +54,17 @@
     };
   };
 
-  # home-manager = {
-  #   users.jacob = import ./hm;
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   #backupFileExtension = builtins.toString self.lastModified
-  #   backupFileExtension = "test";
-  #   extraSpecialArgs = {
-  #     inherit secrets;
-  #     inherit colors;
-  #   };
-  # };
+  home-manager = {
+    users.jacob = import ./hm;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = builtins.toString self.lastModified;
+    #backupFileExtension = "test";
+    extraSpecialArgs = {
+      inherit secrets;
+      inherit colors;
+    };
+  };
 
   programs.hyprland = {
     enable = true;
