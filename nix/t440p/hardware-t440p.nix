@@ -12,7 +12,14 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  #boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    devices = ["nodev"];
+    efiSupport = true;
+    enable = true;
+    #useOSProber = true;
+    gfxmodeEfi = "1920x1080";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
