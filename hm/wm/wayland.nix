@@ -1,5 +1,5 @@
 {
-  secrets,
+  #secrets,
   pkgs,
   ...
 }: {
@@ -21,8 +21,8 @@
   #changes K at night
   services.wlsunset = {
     enable = true;
-    latitude = "${secrets.lat}";
-    longitude = "${secrets.long}";
+    #latitude = "${secrets.lat}";
+    #longitude = "${secrets.long}";
   };
 
   programs.rofi = {
