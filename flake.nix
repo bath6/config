@@ -111,6 +111,22 @@
         ];
     };
 
+    #rog g14
+    nixosConfigurations.rog14 = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        inherit secrets;
+        pkgs-stable = import nixpkgs-stable {inherit system;};
+        inherit colors;
+      };
+      modules =
+        defModules
+        ++ [
+          ./nix/rog14/rog14.nix
+          {boot.binfmt.emulatedSystems = ["aarch64-linux"];}
+        ];
+    };
+
     #Steam deck jovian nixos
     nixosConfigurations.sd = nixpkgs.lib.nixosSystem {
       specialArgs = {
