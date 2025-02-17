@@ -19,11 +19,11 @@
   services.mako.enable = true;
 
   #changes K at night
-  services.wlsunset = {
-    enable = true;
-    #latitude = "${secrets.lat}";
-    #longitude = "${secrets.long}";
-  };
+  # services.wlsunset = {
+  #   enable = true;
+  #   #latitude = "${secrets.lat}";
+  #   #longitude = "${secrets.long}";
+  # };
 
   programs.rofi = {
     enable = true;
