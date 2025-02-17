@@ -13,6 +13,9 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6c6fa7cd-6a44-4b8f-9b27-3d81f75b281c";
     fsType = "btrfs";
