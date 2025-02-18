@@ -75,6 +75,7 @@
     };
   };
   powerManagement.powertop.enable = true;
+  networking.networkmanager.wifi.powersave = true;
 
   #steam
   programs.steam.enable = true;
