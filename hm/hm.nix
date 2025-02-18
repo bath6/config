@@ -72,7 +72,10 @@
   fonts.fontconfig.enable = true;
 
   programs.btop.enable = true;
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+  };
   programs.fastfetch.enable = true;
 
   programs.imv = {
