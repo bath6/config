@@ -29,7 +29,7 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  networking.hostName = "t440p";
+  networking.hostName = "rog14";
 
   environment.systemPackages = [
   ];
