@@ -8,6 +8,16 @@
     ./app
   ];
 
+  xsession.enable = true;
+  home.pointerCursor = {
+    x11.enable = true;
+    gtk.enable = true;
+    hyprcursor = {
+      enable = true;
+      size = 32;
+    };
+  };
+
   home.shellAliases = {
   };
 
