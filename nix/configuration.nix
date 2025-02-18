@@ -37,6 +37,7 @@
     extraGroups = ["wheel" "networkmanager" "video" "audio"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       "${secrets.t440p.key}"
+      "${secrets.rog14.key}"
     ];
     packages = with pkgs; [
       tree
