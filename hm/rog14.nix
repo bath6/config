@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     moonlight-qt
+    xivlauncher
   ];
 
   programs.git = {
@@ -17,9 +18,19 @@
     userName = "rog14";
   };
 
-  wayland.windowManager.hyprland.extraConfig = ''
-    monitor = ,preferred,auto,1.2
-    bind = , XF86MonBrightnessDown, exec, xbacklight -5
-    bind = , XF86MonBrightnessUp, exec, xbacklight +5
-  '';
+  wayland.windowManager.hyprland = {
+    settings = {
+      misc = {
+        vfr = true;
+        vrr = true;
+      };
+    };
+    extraConfig = ''
+      monitor = ,preferred,auto,1.2
+      bind = , XF86MonBrightnessDown, exec, xbacklight -5
+      bind = , XF86MonBrightnessUp, exec, xbacklight +5
+      bind = , XF86KbdBrightnessUp, exec, asusctl -n
+      bind = , XF86KbdBrightnessDown, exec, asusctl -p
+    '';
+  };
 }

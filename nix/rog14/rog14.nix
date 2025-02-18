@@ -1,9 +1,34 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../head.nix
     ./hardware-rog14.nix
     ../t440p/sty.nix
   ];
+
+  #gpu
+  #disable discrete gpu by default
+  hardware.graphics.enable = true;
+  hardware.nvidiaOptimus.disable = true;
+
+  #specialisation that enables dgpu
+  specialisation = {
+    nvidia.configuration = {
+      services.xserver.videoDrivers = ["amdgpu" "nvidia"];
+      hardware.nvidia = {
+        modesetting.enable = true;
+        dynamicBoost.enable = true;
+        powerManagement.enable = true;
+        powerManagement.finegrained = true;
+        open = false;
+        prime = {
+          offload.enable = true;
+          offload.enableOffloadCmd = true;
+          nvidiaBusId = "PCI:1:0:0";
+          amdgpuBusId = "PCI:4:0:0";
+        };
+      };
+    };
+  };
 
   #for wireguard
   services.resolved.enable = true;
@@ -22,6 +47,17 @@
     powerKeyLongPress = "ignore";
   };
 
+  #power management
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
+  services.auto-cpufreq.enable = true;
+  powerManagement.powertop.enable = true;
+
+  #steam
+  programs.steam.enable = true;
+  programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
   services.libinput.enable = true;
 
   hardware.acpilight.enable = true;
@@ -31,6 +67,11 @@
 
   networking.hostName = "rog14";
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    powertop
+    radeontop
+    ryzenadj
+    nvtopPackages.amd
+    nvtopPackages.nvidia
   ];
 }
