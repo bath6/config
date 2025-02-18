@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../head.nix
     ./hardware-rog14.nix
@@ -13,6 +17,7 @@
   #specialisation that enables dgpu
   specialisation = {
     nvidia.configuration = {
+      hardware.nvidiaOptimus.disable = lib.mkForce false;
       services.xserver.videoDrivers = ["amdgpu" "nvidia"];
       hardware.nvidia = {
         modesetting.enable = true;
