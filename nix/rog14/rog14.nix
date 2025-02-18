@@ -53,9 +53,26 @@
   };
 
   #power management
+  #asusd manages platform profiles
   services.asusd = {
     enable = true;
     enableUserService = true;
+  };
+  #no platform profiles
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        turbo = "never";
+        energy_performance_preference = "power";
+        governor = "powersave";
+      };
+      charger = {
+        turb = "auto";
+        energy_performance_preference = "performance";
+        governor = "performance";
+      };
+    };
   };
   powerManagement.powertop.enable = true;
 
@@ -70,6 +87,12 @@
   services.blueman.enable = true;
 
   networking.hostName = "rog14";
+
+  # #ollama
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "cuda";
+  # };
 
   environment.systemPackages = with pkgs; [
     powertop
