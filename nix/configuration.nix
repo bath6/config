@@ -3,7 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   pkgs,
-  #secrets,
+  secrets,
   ...
 }: {
   imports = [
@@ -36,7 +36,7 @@
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "video" "audio"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
-      #"${secrets.t440p.key}"
+      "${secrets.t440p.key}"
     ];
     packages = with pkgs; [
       tree

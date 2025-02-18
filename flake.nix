@@ -115,7 +115,7 @@
     nixosConfigurations.rog14 = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
-        #inherit secrets;
+        inherit secrets;
         pkgs-stable = import nixpkgs-stable {inherit system;};
         inherit colors;
       };

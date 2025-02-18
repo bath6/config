@@ -1,6 +1,6 @@
 {
   pkgs,
-  #secrets,
+  secrets,
   colors,
   config,
   ...
@@ -37,7 +37,7 @@
     useUserPackages = true;
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      #inherit secrets;
+      inherit secrets;
       inherit colors;
     };
   };
