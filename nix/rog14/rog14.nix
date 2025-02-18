@@ -57,7 +57,6 @@
     enable = true;
     enableUserService = true;
   };
-  services.auto-cpufreq.enable = true;
   powerManagement.powertop.enable = true;
 
   #steam
