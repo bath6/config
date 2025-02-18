@@ -7,6 +7,14 @@
     dark = "sudo nixos-rebuild switch --flake .#rog14";
   };
 
+  xdg.desktopEntries = {
+    steam = {
+      name = "Steam";
+      exec = "steam -forcedesktopscaling 1.2";
+      categories = ["Application"];
+    };
+  };
+
   home.packages = with pkgs; [
     moonlight-qt
     xivlauncher

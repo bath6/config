@@ -32,6 +32,10 @@
         shadow.enabled = false;
       };
 
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       exec-once = "waybar";
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
