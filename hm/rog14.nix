@@ -13,6 +13,11 @@
       exec = "steam -forcedesktopscaling 1.2";
       categories = ["Application"];
     };
+    xivlauncher = {
+      name = "XIVLauncher";
+      exec = "env XL_SECRET_PROVIDER=file XIVLauncher.Core";
+      categories = ["Application"];
+    };
   };
 
   home.packages = with pkgs; [
