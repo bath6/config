@@ -73,11 +73,11 @@
 
   networking.hostName = "rog14";
 
-  # #ollama
-  # services.ollama = {
-  #   enable = true;
-  #   acceleration = "cuda";
-  # };
+  #ollama
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 
   environment.systemPackages = with pkgs; [
     powertop
