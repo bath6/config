@@ -58,25 +58,9 @@
     enable = true;
     enableUserService = true;
   };
-  #no platform profiles
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        turbo = "never";
-        energy_performance_preference = "power";
-        governor = "powersave";
-      };
-      charger = {
-        turb = "auto";
-        energy_performance_preference = "performance";
-        governor = "performance";
-      };
-    };
-  };
   powerManagement.powertop.enable = true;
   networking.networkmanager.wifi.powersave = true;
-
+  networking.networkmanager.wifi.backend = "iwd";
   #steam
   programs.steam.enable = true;
   programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
