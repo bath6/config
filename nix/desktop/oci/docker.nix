@@ -7,6 +7,7 @@
   imports = [
     ./arr.nix
     ./hoarder.nix
+    ../../../secrets/test.nix
   ];
 
   #future containers??
