@@ -31,6 +31,10 @@
   };
   programs.hyprlock.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    libva-utils
+  ];
+
   home-manager = {
     users.jacob = import ../hm/${config.networking.hostName}.nix;
     useGlobalPkgs = true;
