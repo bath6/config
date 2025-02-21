@@ -19,7 +19,6 @@
     dynamicBoost.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
-    open = false;
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
@@ -70,6 +69,8 @@
     enable = true;
     acceleration = "cuda";
   };
+  #disable ollama service autostart (service prevents gpu from d3cold)
+  systemd.services."ollama".wantedBy = lib.mkForce [];
 
   environment.systemPackages = with pkgs; [
     powertop
