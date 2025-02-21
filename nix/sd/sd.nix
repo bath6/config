@@ -81,6 +81,8 @@ in {
     base16Scheme = "${pkgs.base16-schemes}${colors.sd.stylix}";
     polarity = "dark";
 
+    targets.qt.platform = "qtct";
+
     image = ../../hm/wall/milk2.png;
     imageScalingMode = "center";
 
