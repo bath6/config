@@ -3,7 +3,7 @@
   laptop = {
     dark = "/share/themes/moonlight.yaml";
     #dark = "/share/themes/pandora.yaml";
-    light = "/share/themes/rose-pine-dawn.yaml";
+    light = "/share/themes/sakura.yaml";
   };
   server = {
     kitty = {
