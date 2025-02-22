@@ -2,7 +2,7 @@
   imports = [
     ./kitty.nix
     ./zed.nix
-    ./newsboat.nix
+    ../../secrets/newsboat.nix
     ./swayimg.nix
   ];
 }
