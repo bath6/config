@@ -53,6 +53,7 @@
     jellyfin-media-player
     obsidian
     nerd-fonts.symbols-only
+    davinci-resolve
 
     # (writeShellScriptBin "obs" ''
     #   obsidian --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --ozone-platform=wayland
