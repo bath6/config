@@ -40,7 +40,7 @@
         version = "2";
         default_model = {
           provider = "ollama";
-          model = "phi3.5";
+          model = "deepseek-r1:7b";
         };
       };
       language_models = {
