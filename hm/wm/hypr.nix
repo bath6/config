@@ -24,6 +24,11 @@
         gaps_out = 4;
       };
 
+      misc = {
+        disable_splash_rendering = true;
+        vfr = true;
+      };
+
       decoration = {
         rounding = 3;
         #rounding_power = 3.0;

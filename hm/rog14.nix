@@ -34,7 +34,6 @@
   wayland.windowManager.hyprland = {
     settings = {
       misc = {
-        vfr = true;
         vrr = true;
       };
     };
