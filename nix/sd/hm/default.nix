@@ -35,9 +35,9 @@ in {
     #ps3
     rpcs3
 
+    emulationstation-de
     #retroarretroarchWithCores
     retroarchWithCores
-    emulationstation-de
     # (writeShellScriptBin "obs" ''
     #   obsidian --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --ozone-platform=wayland
     # '')
