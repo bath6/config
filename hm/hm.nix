@@ -78,6 +78,7 @@
     enableBashIntegration = true;
   };
   programs.fastfetch.enable = true;
+  programs.cava.enable = true;
 
   programs.imv = {
     enable = true;
