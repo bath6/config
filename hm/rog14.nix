@@ -23,6 +23,8 @@
   home.packages = with pkgs; [
     moonlight-qt
     xivlauncher
+    heroic
+    bottles
   ];
 
   programs.git = {
