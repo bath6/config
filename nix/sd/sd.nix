@@ -34,7 +34,8 @@ in {
 
   environment.systemPackages = [
     xivbuild
-    #pkgs-freeimage.emulationstation-de
+    pkgs.firefox
+    pkgs-freeimage.emulationstation-de
   ];
 
   #programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
@@ -55,21 +56,21 @@ in {
       autoStart = true;
       user = "jacob";
       updater.splash = "steamos";
-      desktopSession = "hyprland-uwsm";
+      desktopSession = "plasma";
     };
   };
 
-  home-manager = {
-    users.jacob = import ./hm;
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = builtins.toString self.lastModified;
-    #backupFileExtension = "test";
-    extraSpecialArgs = {
-      inherit secrets;
-      inherit colors;
-    };
-  };
+  # home-manager = {
+  #   users.jacob = import ./hm;
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   backupFileExtension = builtins.toString self.lastModified;
+  #   #backupFileExtension = "test";
+  #   extraSpecialArgs = {
+  #     inherit secrets;
+  #     inherit colors;
+  #   };
+  # };
 
   programs.hyprland = {
     enable = true;

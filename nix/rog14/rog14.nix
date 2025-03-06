@@ -19,6 +19,7 @@
     dynamicBoost.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
+    open = true;
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
