@@ -34,7 +34,7 @@ in {
 
   environment.systemPackages = [
     xivbuild
-    pkgs.firefox
+    #pkgs.firefox
     pkgs-freeimage.emulationstation-de
   ];
 
@@ -60,17 +60,17 @@ in {
     };
   };
 
-  # home-manager = {
-  #   users.jacob = import ./hm;
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   backupFileExtension = builtins.toString self.lastModified;
-  #   #backupFileExtension = "test";
-  #   extraSpecialArgs = {
-  #     inherit secrets;
-  #     inherit colors;
-  #   };
-  # };
+  home-manager = {
+    users.jacob = import ./hm;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = builtins.toString self.lastModified;
+    #backupFileExtension = "test";
+    extraSpecialArgs = {
+      inherit secrets;
+      inherit colors;
+    };
+  };
 
   programs.hyprland = {
     enable = true;

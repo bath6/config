@@ -35,7 +35,7 @@ in {
     #ps3
     rpcs3
 
-    emulationstation-de
+    #emulationstation-de
     #retroarretroarchWithCores
     retroarchWithCores
     # (writeShellScriptBin "obs" ''
