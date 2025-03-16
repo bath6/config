@@ -60,7 +60,7 @@
     defModules = [
       nixvim.nixosModules.nixvim
       home-manager.nixosModules.home-manager
-      stylix.nixosModules.stylix
+      inputs.stylix.nixosModules.stylix
     ];
   in {
     #stable server config
