@@ -27,6 +27,7 @@
       ];
       environment = {
         TZ = "${config.time.timeZone}";
+        HOMEPAGE_ALLOWED_HOSTS = "desktop:2999";
       };
       volumes = [
         "/docker/homepage:/app/config"
