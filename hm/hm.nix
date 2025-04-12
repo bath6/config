@@ -54,6 +54,8 @@
     obsidian
     nerd-fonts.symbols-only
     davinci-resolve
+    discord
+    calibre
 
     # (writeShellScriptBin "obs" ''
     #   obsidian --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --ozone-platform=wayland
