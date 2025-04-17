@@ -28,14 +28,14 @@ in {
   nixpkgs.overlays = [
     (self: super: {
       #freeimage = pkgs-freeimage.freeimage;
-      emulationstation-de = pkgs-freeimage.emulationstation-de;
+      #emulationstation-de = pkgs-freeimage.emulationstation-de;
     })
   ];
 
   environment.systemPackages = [
     xivbuild
     #pkgs.firefox
-    pkgs-freeimage.emulationstation-de
+    #pkgs-freeimage.emulationstation-de
   ];
 
   #programs.steam.extraCompatPackages = [pkgs.proton-ge-bin];
