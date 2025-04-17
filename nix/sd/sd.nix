@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-freeimage,
   secrets,
   colors,
   self,
